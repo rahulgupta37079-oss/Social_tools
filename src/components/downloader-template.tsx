@@ -169,11 +169,9 @@ export const DownloaderTemplate = (props: DownloaderTemplateProps) => {
         </div>
       </section>
 
-      <script>{`
-        // Downloader functionality placeholder
-        window.downloaderType = '${props.toolType}';
-        window.platform = '${props.platform}';
-      `}</script>
+      <script dangerouslySetInnerHTML={{
+        __html: `window.downloaderType = '${props.toolType}'; window.platform = '${props.platform}';`
+      }}></script>
     </Layout>
   )
 }

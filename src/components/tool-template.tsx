@@ -64,9 +64,9 @@ export const ToolTemplate = (props: ToolTemplateProps) => {
         </div>
       </section>
 
-      <script>{`
-        window.currentTool = '${props.toolId}';
-      `}</script>
+      <script dangerouslySetInnerHTML={{
+        __html: `window.currentTool = '${props.toolId}';`
+      }}></script>
     </Layout>
   )
 }
