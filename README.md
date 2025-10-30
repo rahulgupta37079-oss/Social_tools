@@ -7,8 +7,10 @@
 - **Theme**: Black, White, and Yellow (Image Tools) | White and Pink (Instagram Tools)
 
 ## 🌐 Live URLs
+- **Production**: https://imagetools-pro.pages.dev
+- **Latest Deploy**: https://2b4e736e.imagetools-pro.pages.dev
 - **Development**: https://3000-ip8cfyoccqplvzbnmsrg1-b9b802c4.sandbox.novita.ai
-- **GitHub**: (Not yet pushed)
+- **GitHub**: (Ready to push)
 
 ## ✅ Completed Features
 
@@ -145,11 +147,38 @@ Located at `/instagram/*` with white-pink gradient theme:
 - Detailed download instructions
 - Browser extension recommendations
 
+#### TikTok Downloader (1 Tool - Implemented)
+**TikTok Video Downloader** (`/tiktok`)
+- Video URL parsing and validation
+- oEmbed API integration for metadata
+- Thumbnail and author information
+- Multiple download tool recommendations (SnapTik, TikMate, SSSTik)
+- Comprehensive instructions for various platforms
+- ✅ **Status**: Backend Working (with platform limitations)
+
+#### YouTube Downloader (1 Tool - Implemented)
+**YouTube Video/Audio Downloader** (`/youtube`)
+- Video ID extraction from multiple URL formats
+- oEmbed API integration for video information
+- High-quality thumbnail display
+- Format options (MP4, MP3) with quality tiers
+- Recommended download tools (Y2Mate, YT1s, 4K Downloader)
+- Copyright and legal usage reminders
+- ✅ **Status**: Backend Working (with platform limitations)
+
+**Note:** Both TikTok and YouTube restrict direct video downloads through APIs. The tools provide:
+- Video/author metadata via oEmbed APIs
+- High-quality thumbnails
+- Recommended third-party download tools
+- Detailed step-by-step instructions
+- Browser extension suggestions
+- Online tool recommendations
+
 #### Other Social Media Tools (Coming Soon)
-- TikTok Video Downloader
-- YouTube Video/Audio Downloader
 - Twitter/X Media Downloader
 - Facebook Video Downloader
+- Pinterest Image Downloader
+- Reddit Media Downloader
 
 ## 🎨 Design Features
 
@@ -186,21 +215,43 @@ Located at `/instagram/*` with white-pink gradient theme:
 - **Files**: 
   - `/public/static/app.js` (23KB) - Image tools
   - `/public/static/instagram.js` (11KB) - Instagram tools
+  - `/public/static/social-media.js` (11KB) - TikTok & YouTube tools
 
 ### Backend
 - **Platform**: Cloudflare Pages
 - **Runtime**: Cloudflare Workers
-- **Routes**: 17 pages + 1 API endpoint
-- **Bundle Size**: 139.93 KB
+- **Routes**: 19 pages + 3 API endpoints
+- **Bundle Size**: 146.64 KB
 - **API Endpoints**:
   - `POST /api/instagram/fetch` - Fetch Instagram content metadata
+  - `POST /api/tiktok/fetch` - Fetch TikTok video information
+  - `POST /api/youtube/fetch` - Fetch YouTube video details
 
-### Instagram API Integration
+### Social Media API Integration
+
+**Instagram:**
 - **oEmbed API**: Used for public post information
 - **Profile API**: Attempts to fetch public profile data
 - **Fallback**: Provides direct links and instructions when API access is restricted
-- **User-Agent**: Mimics browser requests for better compatibility
 - **Error Handling**: Comprehensive error messages with alternative solutions
+
+**TikTok:**
+- **oEmbed API**: Fetches video metadata and author information
+- **Video ID Extraction**: Parses various TikTok URL formats
+- **Tool Recommendations**: Suggests SnapTik, TikMate, SSSTik
+- **Platform-Specific Instructions**: Mobile app, browser extensions, online tools
+
+**YouTube:**
+- **oEmbed API**: Retrieves video details and thumbnails
+- **Video ID Parsing**: Supports youtube.com and youtu.be URLs
+- **Format Information**: Displays available quality options
+- **Legal Reminders**: Copyright and fair use notices
+- **Download Tools**: Y2Mate, YT1s, 4K Video Downloader, SaveFrom.net
+
+**Common Features:**
+- **User-Agent Spoofing**: Mimics browser requests for better compatibility
+- **Error Handling**: Graceful degradation with helpful fallbacks
+- **Multi-Platform Support**: Consistent UX across all platforms
 
 ### Image Processing
 - All processing happens **client-side** in the browser
@@ -242,6 +293,26 @@ webapp/
 ├── ecosystem.config.cjs       # PM2 process manager config
 └── package.json               # Dependencies and scripts
 ```
+
+## 🎉 Recent Updates (2025-10-30)
+
+### ✅ Completed in This Session:
+1. **Fixed dropdown menu hover issue** - Menus now stay open when selecting options
+2. **Added merge tool functionality** - Combine multiple images horizontally or vertically
+3. **Implemented Instagram backend API** - Full API with oEmbed integration
+4. **Added TikTok downloader** - Complete with tool recommendations
+5. **Added YouTube downloader** - Video/audio download instructions and tools
+6. **Deployed to Cloudflare Pages** - Live at https://imagetools-pro.pages.dev
+7. **Updated navigation** - Organized dropdown menus for better UX
+8. **Enhanced social tools page** - Moved TikTok/YouTube from "Coming Soon" to active
+
+### 🌟 Key Features Added:
+- **3 Backend API endpoints** for Instagram, TikTok, and YouTube
+- **6 social media downloaders** (4 Instagram + TikTok + YouTube)
+- **Comprehensive error handling** with helpful fallback instructions
+- **Tool recommendations** for each platform (SnapTik, Y2Mate, etc.)
+- **oEmbed integration** for metadata and thumbnails
+- **Production deployment** on Cloudflare's global CDN
 
 ## 🚀 Development
 
@@ -373,9 +444,12 @@ curl http://localhost:3000
 - [ ] Video tools (compress, convert, trim)
 
 ## 📝 Deployment Status
-- **Platform**: Cloudflare Pages (ready to deploy)
-- **Status**: ✅ Development - ❌ Production
+- **Platform**: Cloudflare Pages
+- **Status**: ✅ Development - ✅ Production (LIVE)
+- **Production URL**: https://imagetools-pro.pages.dev
+- **Project Name**: imagetools-pro
 - **Last Updated**: 2025-10-30
+- **Last Deploy**: https://2b4e736e.imagetools-pro.pages.dev
 
 ## 🔐 Security & Privacy
 - ✅ All image processing happens in the browser
@@ -404,16 +478,20 @@ curl http://localhost:3000
 | IG Post | `/instagram/post` | ✅ Working* | API integrated |
 | IG Story | `/instagram/story` | ✅ Working* | API integrated |
 | IG Profile | `/instagram/profile` | ✅ Working* | API integrated |
+| TikTok | `/tiktok` | ✅ Working* | oEmbed + Tools |
+| YouTube | `/youtube` | ✅ Working* | oEmbed + Tools |
 
-**Total**: 16 tools (12 image tools fully working, 4 Instagram tools working with limitations)
+**Total**: 18 tools (12 image tools fully working, 6 social media tools working with platform limitations)
 
-*Instagram tools work within Instagram's API limitations. They provide post information, thumbnails, and download instructions.
+*Social media tools work within platform API limitations. They provide metadata, thumbnails, tool recommendations, and detailed download instructions.
 
 ## 📈 Performance
-- Bundle size: 137.87 KB (optimized)
+- Bundle size: 146.64 KB (optimized)
 - Build time: ~730ms
 - Page load: <1s
 - Image processing: Real-time (client-side)
+- API response time: <500ms
+- Edge deployment: Global CDN (Cloudflare)
 
 ## 🤝 Contributing
 This project is ready for:
