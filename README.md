@@ -10,7 +10,7 @@
 - **Production**: https://imagetools-pro.pages.dev
 - **Latest Deploy**: https://2b4e736e.imagetools-pro.pages.dev
 - **Development**: https://3000-ip8cfyoccqplvzbnmsrg1-b9b802c4.sandbox.novita.ai
-- **GitHub**: (Ready to push)
+- **GitHub Repository**: https://github.com/rahulgupta37079-oss/Social_tools
 
 ## ✅ Completed Features
 

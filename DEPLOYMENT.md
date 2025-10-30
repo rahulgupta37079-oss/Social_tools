@@ -18,6 +18,12 @@
 ### Development (Sandbox)
 - **Dev Server**: https://3000-ip8cfyoccqplvzbnmsrg1-b9b802c4.sandbox.novita.ai
 
+### GitHub Repository
+- **Source Code**: https://github.com/rahulgupta37079-oss/Social_tools
+- **Branch**: main
+- **Commits**: 16+
+- **Status**: ✅ Public and Live
+
 ---
 
 ## 📦 What Was Deployed
