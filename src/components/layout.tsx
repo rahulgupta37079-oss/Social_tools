@@ -82,13 +82,15 @@ export const Layout = (props: { children: any; title: string }) => {
           .dropdown-content {
             display: none;
             position: absolute;
+            top: calc(100% - 8px);
+            left: 0;
             background-color: #1a1a1a;
             min-width: 200px;
             box-shadow: 0 8px 16px rgba(255, 215, 0, 0.2);
             z-index: 1000;
             border: 2px solid #FFD700;
             border-radius: 8px;
-            margin-top: 8px;
+            padding-top: 8px;
             pointer-events: auto;
           }
           .dropdown:hover .dropdown-content {
