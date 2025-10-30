@@ -191,6 +191,9 @@ function initializeToolControls() {
     case 'removebg':
       initRemoveBg();
       break;
+    case 'merge':
+      initMerge();
+      break;
   }
 }
 
@@ -770,5 +773,120 @@ function initRemoveBg() {
     }
 
     ctx.putImageData(imageData, 0, 0);
+  }
+}
+
+// ===== MERGE TOOL =====
+function initMerge() {
+  const additionalFilesInput = document.getElementById('additional-files');
+  const mergeBtns = document.querySelectorAll('.merge-btn');
+  const imageListDiv = document.getElementById('image-list');
+  
+  let images = [];
+  let mergeDirection = 'horizontal';
+
+  mergeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      mergeBtns.forEach(b => b.classList.remove('btn-primary'));
+      mergeBtns.forEach(b => b.classList.add('btn-secondary'));
+      btn.classList.remove('btn-secondary');
+      btn.classList.add('btn-primary');
+      
+      mergeDirection = btn.dataset.direction;
+      if (images.length > 0) {
+        mergeImages();
+      }
+    });
+  });
+
+  if (additionalFilesInput) {
+    additionalFilesInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      files.forEach(file => {
+        if (file.type.match('image.*')) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+              images.push(img);
+              updateImageList();
+              if (images.length > 0) {
+                mergeImages();
+              }
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+  }
+
+  function updateImageList() {
+    if (imageListDiv) {
+      imageListDiv.innerHTML = `
+        <div class="text-white">
+          <i class="fas fa-images mr-2 text-yellow"></i>
+          ${images.length + 1} image${images.length + 1 > 1 ? 's' : ''} ready to merge
+        </div>
+      `;
+    }
+  }
+
+  function mergeImages() {
+    if (!currentImage) return;
+
+    const allImages = [currentImage, ...images];
+    const spacing = parseInt(document.getElementById('merge-spacing')?.value || 0);
+
+    if (mergeDirection === 'horizontal') {
+      // Calculate total width and max height
+      let totalWidth = spacing * (allImages.length - 1);
+      let maxHeight = 0;
+      
+      allImages.forEach(img => {
+        totalWidth += img.width;
+        maxHeight = Math.max(maxHeight, img.height);
+      });
+
+      canvas.width = totalWidth;
+      canvas.height = maxHeight;
+      ctx.clearRect(0, 0, totalWidth, maxHeight);
+
+      // Draw images horizontally
+      let currentX = 0;
+      allImages.forEach(img => {
+        const y = (maxHeight - img.height) / 2; // Center vertically
+        ctx.drawImage(img, currentX, y, img.width, img.height);
+        currentX += img.width + spacing;
+      });
+    } else {
+      // Vertical merge
+      let maxWidth = 0;
+      let totalHeight = spacing * (allImages.length - 1);
+      
+      allImages.forEach(img => {
+        maxWidth = Math.max(maxWidth, img.width);
+        totalHeight += img.height;
+      });
+
+      canvas.width = maxWidth;
+      canvas.height = totalHeight;
+      ctx.clearRect(0, 0, maxWidth, totalHeight);
+
+      // Draw images vertically
+      let currentY = 0;
+      allImages.forEach(img => {
+        const x = (maxWidth - img.width) / 2; // Center horizontally
+        ctx.drawImage(img, x, currentY, img.width, img.height);
+        currentY += img.height + spacing;
+      });
+    }
+  }
+
+  // When first image is loaded, add it to the list
+  if (currentImage) {
+    images = [];
+    updateImageList();
   }
 }
