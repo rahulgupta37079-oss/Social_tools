@@ -75,11 +75,11 @@ export const DownloaderTemplate = (props: DownloaderTemplateProps) => {
                 <div class="flex flex-col md:flex-row gap-3">
                   <input 
                     type="text" 
-                    id="url-input" 
+                    id="instagram-url" 
                     placeholder={props.placeholder}
                     class={`flex-1 px-4 py-3 rounded-lg ${isInstagram ? 'instagram-input text-gray-700' : 'bg-black text-white border-2 border-yellow focus:outline-none focus:border-white'}`}
                   />
-                  <button id="download-btn" class={`${isInstagram ? 'instagram-btn' : 'btn-primary'} px-8 py-3 rounded-lg text-lg text-white font-bold`}>
+                  <button id="instagram-download-btn" class={`${isInstagram ? 'instagram-btn' : 'btn-primary'} px-8 py-3 rounded-lg text-lg text-white font-bold`}>
                     <i class="fas fa-download mr-2"></i>
                     Download
                   </button>
@@ -93,28 +93,7 @@ export const DownloaderTemplate = (props: DownloaderTemplateProps) => {
               </div>
 
               {/* Result Section */}
-              <div id="result" class="hidden">
-                <div class={`${isInstagram ? 'bg-pink-50' : 'bg-black'} rounded-lg p-6`}>
-                  <h3 class={`font-bold text-xl mb-4 ${isInstagram ? 'instagram-gradient-text' : 'text-yellow'}`}>
-                    <i class="fas fa-check-circle mr-2"></i>
-                    Ready to Download
-                  </h3>
-                  
-                  {/* Preview */}
-                  <div id="preview" class="mb-4"></div>
-
-                  {/* Download Buttons */}
-                  <div id="download-options" class="space-y-3"></div>
-                </div>
-              </div>
-
-              {/* Error State */}
-              <div id="error" class="hidden bg-red-100 border-2 border-red-500 rounded-lg p-4">
-                <p class="text-red-600">
-                  <i class="fas fa-exclamation-triangle mr-2"></i>
-                  <span id="error-message">Error processing URL</span>
-                </p>
-              </div>
+              <div id="download-results"></div>
             </div>
 
             {/* How to Use Section */}

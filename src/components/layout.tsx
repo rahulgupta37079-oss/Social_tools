@@ -299,6 +299,7 @@ export const Layout = (props: { children: any; title: string }) => {
         </footer>
         
         <script src="/static/app.js"></script>
+        <script src="/static/instagram.js"></script>
       </body>
     </html>
   )
