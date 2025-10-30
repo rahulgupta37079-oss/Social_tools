@@ -1,16 +1,59 @@
-# ImageTools - Professional Image Editing & Social Media Tools
+# 🎨 ImageTools Pro
 
-## Project Overview
-- **Name**: ImageTools
-- **Goal**: Create a comprehensive web-based tool platform similar to iLoveIMG with image editing and social media download features
-- **Tech Stack**: Hono + TypeScript + Cloudflare Pages + Vite + TailwindCSS
-- **Theme**: Black, White, and Yellow (Image Tools) | White and Pink (Instagram Tools)
+<div align="center">
+
+**Professional Image Editing & Social Media Tools - All in Your Browser**
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge)](https://imagetools-pro.pages.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?style=for-the-badge&logo=github)](https://github.com/rahulgupta37079-oss/Social_tools)
+[![Cloudflare](https://img.shields.io/badge/Deployed%20on-Cloudflare%20Pages-orange?style=for-the-badge&logo=cloudflare)](https://imagetools-pro.pages.dev)
+
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
+![Hono](https://img.shields.io/badge/Hono-E36002?style=flat&logo=hono&logoColor=white)
+![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=flat&logo=cloudflare&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+
+**🎯 18 Tools | 🚀 Edge Deployment | 🔒 Privacy-First | 📱 Responsive**
+
+[🌐 Try It Now](https://imagetools-pro.pages.dev) · [📖 Documentation](#-completed-features) · [🚀 Deployment](#-deployment-status)
+
+</div>
+
+---
+
+## 📋 Project Overview
+
+**ImageTools Pro** is a comprehensive web-based platform offering professional image editing and social media content downloading tools. Built with modern web technologies and deployed on Cloudflare's global edge network for lightning-fast performance.
+
+### ✨ Key Features
+- 🎨 **12 Image Editing Tools** - Complete client-side processing with Canvas API
+- 📱 **6 Social Media Downloaders** - Instagram, TikTok, YouTube support
+- 🚀 **Edge Deployment** - Global CDN with <1s page load
+- 🔒 **Privacy-First** - No uploads, no tracking, all processing in browser
+- 💎 **Professional UI** - Beautiful gradients, smooth animations
+- 📐 **100+ Advanced Options** - Professional-grade controls
+- 📱 **Fully Responsive** - Works perfectly on mobile and desktop
+
+### 🛠️ Tech Stack
+- **Framework**: [Hono](https://hono.dev) - Lightweight web framework for Cloudflare Workers
+- **Runtime**: [Cloudflare Workers](https://workers.cloudflare.com) - Edge computing platform
+- **Build Tool**: [Vite](https://vitejs.dev) - Next generation frontend tooling
+- **Styling**: [TailwindCSS](https://tailwindcss.com) - Utility-first CSS framework
+- **Language**: TypeScript - Type-safe development
+- **Icons**: Font Awesome 6.4.0
+
+### 🎨 Design Themes
+- **Image Tools**: Black (#000), White (#FFF), Yellow (#FFD700)
+- **Instagram**: White + Pink gradients (#E1306C, #C13584, #833AB4)
+- **TikTok**: Black theme (#000000)
+- **YouTube**: Red theme (#FF0000)
 
 ## 🌐 Live URLs
-- **Production**: https://imagetools-pro.pages.dev
-- **Latest Deploy**: https://2b4e736e.imagetools-pro.pages.dev
-- **Development**: https://3000-ip8cfyoccqplvzbnmsrg1-b9b802c4.sandbox.novita.ai
-- **GitHub Repository**: https://github.com/rahulgupta37079-oss/Social_tools
+- **🚀 Production**: https://imagetools-pro.pages.dev
+- **📦 Latest Deploy**: https://2b4e736e.imagetools-pro.pages.dev
+- **💻 Development**: https://3000-ip8cfyoccqplvzbnmsrg1-b9b802c4.sandbox.novita.ai
+- **🔗 GitHub**: https://github.com/rahulgupta37079-oss/Social_tools
 
 ## ✅ Completed Features
 
@@ -494,12 +537,172 @@ curl http://localhost:3000
 - Edge deployment: Global CDN (Cloudflare)
 
 ## 🤝 Contributing
-This project is ready for:
-- Open source release
-- Contributions
-- Feature requests
-- Bug reports
+
+We welcome contributions! This project is open source and ready for community involvement.
+
+### How to Contribute
+
+1. **Fork the repository**
+   ```bash
+   git clone https://github.com/rahulgupta37079-oss/Social_tools.git
+   cd Social_tools
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Create a new branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+4. **Make your changes**
+   - Add new features
+   - Fix bugs
+   - Improve documentation
+   - Optimize performance
+
+5. **Test your changes**
+   ```bash
+   npm run build
+   npm run dev
+   ```
+
+6. **Commit and push**
+   ```bash
+   git add .
+   git commit -m "feat: add your feature description"
+   git push origin feature/your-feature-name
+   ```
+
+7. **Create a Pull Request**
+   - Go to the repository on GitHub
+   - Click "New Pull Request"
+   - Describe your changes
+   - Submit for review
+
+### Contribution Guidelines
+
+- ✅ Follow existing code style and conventions
+- ✅ Write clear commit messages
+- ✅ Test your changes thoroughly
+- ✅ Update documentation if needed
+- ✅ Keep PRs focused on a single feature/fix
+- ✅ Be respectful and constructive
+
+### Areas for Contribution
+
+1. **New Image Tools**
+   - Add more filters and effects
+   - Implement batch processing
+   - Add undo/redo functionality
+
+2. **Social Media Platforms**
+   - Twitter/X downloader
+   - Facebook video downloader
+   - Pinterest image downloader
+
+3. **UI/UX Improvements**
+   - Dark mode toggle
+   - Keyboard shortcuts
+   - Better mobile experience
+
+4. **Performance**
+   - Optimize bundle size
+   - Improve loading times
+   - Add service worker caching
+
+5. **Documentation**
+   - Add tutorials
+   - Create video guides
+   - Translate to other languages
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+```
+MIT License
+
+Copyright (c) 2025 ImageTools Pro
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## 💖 Support
+
+If you find this project helpful, please consider:
+- ⭐ **Starring the repository** on GitHub
+- 🐛 **Reporting bugs** via GitHub Issues
+- 💡 **Suggesting features** via GitHub Discussions
+- 🔀 **Contributing code** via Pull Requests
+- 📢 **Sharing with others** who might find it useful
+
+## 🙏 Acknowledgments
+
+- **Hono Team** - For the amazing lightweight framework
+- **Cloudflare** - For edge computing platform and free hosting
+- **Vite Team** - For the blazing fast build tool
+- **TailwindCSS** - For the utility-first CSS framework
+- **Font Awesome** - For the comprehensive icon library
+- **Open Source Community** - For inspiration and support
+
+## 📞 Contact & Support
+
+- **GitHub Issues**: [Report bugs or request features](https://github.com/rahulgupta37079-oss/Social_tools/issues)
+- **GitHub Discussions**: [Ask questions or share ideas](https://github.com/rahulgupta37079-oss/Social_tools/discussions)
+- **Live Demo**: [Try the app](https://imagetools-pro.pages.dev)
+
+## 🗺️ Roadmap
+
+### Coming Soon
+- [ ] Twitter/X media downloader
+- [ ] Facebook video downloader
+- [ ] Batch image processing
+- [ ] Undo/redo functionality
+- [ ] PDF tools (compress, merge, convert)
+- [ ] Video tools (compress, convert, trim)
+- [ ] Dark mode theme
+- [ ] Keyboard shortcuts
+- [ ] User preferences saving
+- [ ] Multi-language support
+
+### Future Plans
+- [ ] User accounts (optional)
+- [ ] Cloud storage integration
+- [ ] Advanced AI-powered features
+- [ ] Mobile app (PWA)
+- [ ] Browser extensions
+- [ ] API for developers
 
 ---
 
+<div align="center">
+
 **Built with ❤️ using Hono, TypeScript, and Cloudflare Pages**
+
+⭐ **Star this repo if you find it helpful!** ⭐
+
+[🌐 Live Demo](https://imagetools-pro.pages.dev) · [📖 Full Docs](./DEPLOYMENT.md) · [🐛 Report Bug](https://github.com/rahulgupta37079-oss/Social_tools/issues)
+
+**Made with 💻 by the open source community**
+
+</div>
