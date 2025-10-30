@@ -17,6 +17,28 @@ export const SocialToolsPage = () => {
 
   return (
     <Layout title="Social Media Tools">
+      <style>{`
+        .instagram-card {
+          background: linear-gradient(135deg, #1a1a1a 0%, #2d1b2e 100%);
+          border: 2px solid;
+          border-image: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) 1;
+          transition: all 0.3s ease;
+        }
+        .instagram-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(240, 148, 51, 0.3);
+        }
+        .instagram-gradient {
+          background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        .instagram-text {
+          background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      `}</style>
+
       <section class="container mx-auto px-4 py-16">
         {/* Header */}
         <div class="text-center mb-16">
@@ -35,18 +57,18 @@ export const SocialToolsPage = () => {
         {/* Instagram Tools */}
         <div class="mb-16">
           <div class="flex items-center mb-8">
-            <i class="fab fa-instagram text-yellow text-4xl mr-4"></i>
+            <i class="fab fa-instagram text-5xl mr-4 instagram-text"></i>
             <div>
-              <h2 class="text-3xl font-bold text-white">Instagram Tools</h2>
+              <h2 class="text-3xl font-bold instagram-text">Instagram Tools</h2>
               <p class="text-gray-400">Download Reels, Posts, Stories, and Profile Pictures</p>
             </div>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {instagramTools.map(tool => (
-              <a href={tool.path} class="tool-card rounded-lg p-6 block">
+              <a href={tool.path} class="instagram-card rounded-lg p-6 block">
                 <div class="text-center">
-                  <i class={`fas ${tool.icon} text-yellow text-4xl mb-4`}></i>
+                  <i class={`fas ${tool.icon} text-pink-500 text-4xl mb-4`}></i>
                   <h3 class="text-xl font-bold text-white mb-2">{tool.name}</h3>
                   <p class="text-gray-400 text-sm">{tool.desc}</p>
                 </div>
@@ -82,31 +104,31 @@ export const SocialToolsPage = () => {
         </div>
 
         {/* Features */}
-        <div class="bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-lg p-8 mb-16">
-          <h2 class="text-3xl font-bold text-black mb-6 text-center">
+        <div class="instagram-gradient rounded-lg p-8 mb-16">
+          <h2 class="text-3xl font-bold text-white mb-6 text-center">
             <i class="fas fa-star mr-2"></i>
             Why Use Our Tools?
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="text-center">
-              <i class="fas fa-download text-black text-3xl mb-3"></i>
-              <h3 class="font-bold text-black mb-2">Unlimited Downloads</h3>
-              <p class="text-black text-sm">No limits, no quotas</p>
+            <div class="text-center bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
+              <i class="fas fa-download text-white text-3xl mb-3"></i>
+              <h3 class="font-bold text-white mb-2">Unlimited Downloads</h3>
+              <p class="text-white text-opacity-80 text-sm">No limits, no quotas</p>
             </div>
-            <div class="text-center">
-              <i class="fas fa-hd-video text-black text-3xl mb-3"></i>
-              <h3 class="font-bold text-black mb-2">High Quality</h3>
-              <p class="text-black text-sm">Best available quality</p>
+            <div class="text-center bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
+              <i class="fas fa-hd-video text-white text-3xl mb-3"></i>
+              <h3 class="font-bold text-white mb-2">High Quality</h3>
+              <p class="text-white text-opacity-80 text-sm">Best available quality</p>
             </div>
-            <div class="text-center">
-              <i class="fas fa-user-secret text-black text-3xl mb-3"></i>
-              <h3 class="font-bold text-black mb-2">Anonymous</h3>
-              <p class="text-black text-sm">Complete privacy</p>
+            <div class="text-center bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
+              <i class="fas fa-user-secret text-white text-3xl mb-3"></i>
+              <h3 class="font-bold text-white mb-2">Anonymous</h3>
+              <p class="text-white text-opacity-80 text-sm">Complete privacy</p>
             </div>
-            <div class="text-center">
-              <i class="fas fa-bolt text-black text-3xl mb-3"></i>
-              <h3 class="font-bold text-black mb-2">Super Fast</h3>
-              <p class="text-black text-sm">Download in seconds</p>
+            <div class="text-center bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
+              <i class="fas fa-bolt text-white text-3xl mb-3"></i>
+              <h3 class="font-bold text-white mb-2">Super Fast</h3>
+              <p class="text-white text-opacity-80 text-sm">Download in seconds</p>
             </div>
           </div>
         </div>
