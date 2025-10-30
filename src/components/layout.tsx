@@ -85,13 +85,15 @@ export const Layout = (props: { children: any; title: string }) => {
             background-color: #1a1a1a;
             min-width: 200px;
             box-shadow: 0 8px 16px rgba(255, 215, 0, 0.2);
-            z-index: 1;
+            z-index: 1000;
             border: 2px solid #FFD700;
             border-radius: 8px;
             margin-top: 8px;
+            pointer-events: auto;
           }
           .dropdown:hover .dropdown-content {
             display: block;
+            pointer-events: auto;
           }
           .dropdown-content a {
             color: #fff;
@@ -99,10 +101,15 @@ export const Layout = (props: { children: any; title: string }) => {
             text-decoration: none;
             display: block;
             transition: all 0.3s ease;
+            cursor: pointer;
           }
           .dropdown-content a:hover {
             background-color: #FFD700;
             color: #000;
+          }
+          .dropdown > a {
+            pointer-events: auto;
+            cursor: pointer;
           }
           .mobile-menu {
             display: none;
