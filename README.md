@@ -1,6 +1,6 @@
 # ImageTools - Professional Image Editing Suite
 
-A comprehensive, browser-based image editing toolkit built with Hono and Cloudflare Pages. Features 12 powerful tools with a sleek black, white, and yellow design.
+A comprehensive, browser-based image editing toolkit built with Hono and Cloudflare Pages. Features 12 powerful tools with **advanced options** and a sleek black, white, and yellow design.
 
 ## 🌟 Live Demo
 
@@ -9,30 +9,153 @@ A comprehensive, browser-based image editing toolkit built with Hono and Cloudfl
 ## ✨ Features Completed
 
 ### Image Optimization Tools
-- **Compress Image** (`/compress`) - Reduce file size with quality control (10-100%)
-- **Resize Image** (`/resize`) - Change dimensions with aspect ratio lock
-- **Upscale Image** (`/upscale`) - Increase resolution 2x, 3x, or 4x
+
+#### **Compress Image** (`/compress`)
+- **Basic**: Quality slider (10-100%)
+- **Advanced**:
+  - Output format selection (JPEG, PNG, WebP)
+  - Compression method (Standard, Aggressive, Balanced)
+  - Preserve metadata option
+  - Color palette optimization
+  - Real-time file size estimation
+
+#### **Resize Image** (`/resize`)
+- **Basic**: Custom dimensions with aspect ratio lock
+- **Advanced**:
+  - Resize modes (Stretch, Contain, Cover, Exact)
+  - Resampling algorithms (High/Medium/Low quality, Pixelated)
+  - Scale by percentage
+  - Quick presets (Full HD, HD, SVGA, VGA)
+  - Sharpening after resize option
+
+#### **Upscale Image** (`/upscale`)
+- **Basic**: 2x, 3x, 4x upscaling
+- **Advanced**:
+  - Interpolation methods (Nearest, Bilinear, Bicubic, Lanczos)
+  - Custom scale factor (1-10x)
+  - Sharpening control
+  - Noise reduction
+  - Edge enhancement
+  - Anti-aliasing
+  - Target resolution presets (Full HD, 2K, 4K, 8K)
 
 ### Image Transformation Tools
-- **Crop Image** (`/crop`) - Interactive cropping with presets (1:1, 4:3, 16:9, free)
-- **Rotate Image** (`/rotate`) - Rotate by preset angles or custom degrees (0-360°)
-- **Flip Image** (`/flip`) - Flip horizontally or vertically
+
+#### **Crop Image** (`/crop`)
+- **Basic**: Interactive selection with presets (1:1, 4:3, 16:9, Free)
+- **Advanced**:
+  - Additional aspect ratios (9:16 Story, 2:3 Portrait, 3:2 Photo, 21:9 Cinema)
+  - Manual coordinate input (X, Y, Width, Height)
+  - 9-point alignment system
+  - Grid overlay (Rule of thirds)
+
+#### **Rotate Image** (`/rotate`)
+- **Basic**: Quick rotate buttons (90°, 180°, 270°, -90°) + slider (0-360°)
+- **Advanced**:
+  - Custom background color fill
+  - Auto-trim edges option
+  - Expand canvas to fit
+  - Rotation direction control
+  - Precise angle input (with decimals)
+  - Quick angles (45°, 135°, 225°, 315°, 22.5°, 67.5°)
+  - Smooth rotation toggle
+
+#### **Flip Image** (`/flip`)
+- **Basic**: Horizontal and vertical flip
+- **Advanced**:
+  - Combined flip (both directions)
+  - Mirror effects
+  - Flip animation toggle
+  - Flip history tracking
 
 ### Image Enhancement Tools
-- **Apply Filters** (`/filter`) - 6 artistic filters (grayscale, sepia, invert, blur, sharpen)
-- **Adjust Brightness** (`/brightness`) - Fine-tune brightness, contrast, and saturation
-- **Remove Background** (`/remove-bg`) - Basic background removal with custom color option
+
+#### **Apply Filters** (`/filter`)
+- **Basic**: 6 filters (Original, Grayscale, Sepia, Invert, Blur, Sharpen)
+- **Advanced**:
+  - 6 additional filters (Vintage, Polaroid, Emboss, Edge Detect, Posterize, Solarize)
+  - Filter intensity control (0-100%)
+  - Blur radius adjustment
+  - Sharpen amount control
+  - Individual RGB channel adjustments
+  - Temperature control (Cool to Warm)
+  - Tint adjustment (Green to Magenta)
+  - Vignette effect
+  - Auto enhance colors
+  - Preserve skin tones
+  - Custom presets (B&W High Contrast, Warm Sunset, Cool Winter, Dreamy)
+
+#### **Adjust Brightness** (`/brightness`)
+- **Basic**: Brightness, Contrast, Saturation sliders
+- **Advanced**:
+  - Shadows/Highlights/Midtones control
+  - Gamma adjustment
+  - Exposure control
+  - Vibrance control
+  - Clarity adjustment
+  - Individual RGB channel brightness
+  - Levels (Black Point, Mid Point, White Point)
+  - Auto levels/contrast/color balance
+  - Quick presets (Brighten, Darken, High/Low Contrast, Vivid, Muted)
+  - Copy/Paste settings
+  - Histogram display
+
+#### **Remove Background** (`/remove-bg`)
+- **Basic**: Auto background removal + optional color fill
+- **Advanced**:
+  - Detection sensitivity (1-10)
+  - Edge refinement (None, Soft, Hard, Feathered)
+  - Feather radius control
+  - Threshold adjustment
+  - Remove similar colors option
+  - Smooth edges (Anti-aliasing)
+  - Fill small holes in subject
+  - Output options (Transparent, Color fill)
+  - Preview modes (Original, Result, Split view)
 
 ### Creative Tools
-- **Add Watermark** (`/watermark`) - Text watermarks with custom position, size, and opacity
-- **Convert Format** (`/convert`) - Convert between PNG, JPEG, WebP, and BMP
-- **Merge Images** (`/merge`) - Combine multiple images horizontally or vertically
+
+#### **Add Watermark** (`/watermark`)
+- **Basic**: Text, font size, opacity, 9 position presets
+- **Advanced**:
+  - 8 font families (Arial, Helvetica, Times, Georgia, Courier, Verdana, Impact, Comic Sans)
+  - Font styles (Normal, Bold, Italic)
+  - Custom text color + 5 color presets
+  - Text rotation (-180° to 180°)
+  - Text outline (width + color)
+  - Shadow effects (X/Y offset, blur, color)
+  - Custom position (X/Y coordinates)
+  - Repeat watermark (tiling)
+
+#### **Convert Format** (`/convert`)
+- **Basic**: Convert to PNG, JPEG, WebP, BMP
+- **Advanced**:
+  - JPEG quality control + progressive option
+  - PNG compression levels (0-9) + transparency preservation
+  - WebP quality control + lossless option
+  - Color space selection (sRGB, RGB, Grayscale)
+  - Strip metadata option
+  - Optimize for file size
+  - Format-specific information display
+
+#### **Merge Images** (`/merge`)
+- **Basic**: Horizontal/vertical merge + add multiple images
+- **Advanced**:
+  - Spacing between images
+  - Alignment options (Start, Center, End, Stretch)
+  - Background color selection
+  - Transparent background option
+  - Grid layouts (Single row/column, 2×2, 3×3)
+  - Border settings (width + color)
+  - Match all images to same size
+  - Individual padding control (Top, Right, Bottom, Left)
 
 ## 🎨 Design Features
 
 - **Color Scheme**: Black (#000), White (#FFF), Yellow (#FFD700)
 - **Responsive Layout**: Works on desktop, tablet, and mobile
 - **Interactive UI**: Hover effects, smooth transitions, drag-and-drop support
+- **Collapsible Advanced Options**: Clean interface with expandable settings
 - **Privacy First**: All processing happens in the browser - no uploads to servers
 
 ## 🏗️ Technical Stack
@@ -118,50 +241,34 @@ npm run clean-port     # Kill process on port 3000
 4. Real-time preview updates on canvas
 5. User downloads the processed result
 
+### Advanced Options
+- All tools have collapsible **Advanced Options** sections
+- Click to expand and access professional-grade controls
+- Settings persist during editing session
+- Clean UI keeps basic options front and center
+
 ### Key Technologies
 - **Canvas API**: For all image manipulation
 - **FileReader API**: For client-side file loading
 - **Blob API**: For image download functionality
 - **ImageData API**: For pixel-level operations
 
-## 🎯 Tool Details
+## 🎯 Tool Details Summary
 
-### Compress Tool
-- Quality slider: 10-100%
-- Real-time quality preview
-- Optimal balance between size and quality
-
-### Resize Tool
-- Custom width/height inputs
-- Aspect ratio lock toggle
-- Smart scaling algorithms
-
-### Crop Tool
-- Interactive selection
-- Preset ratios (1:1, 4:3, 16:9)
-- Free-form cropping
-
-### Rotate Tool
-- Quick rotate buttons (90°, 180°, 270°)
-- Custom angle slider (0-360°)
-- Smooth rotation with canvas transforms
-
-### Watermark Tool
-- Custom text input
-- 9 position options
-- Adjustable font size (10-100px)
-- Opacity control (0-100%)
-
-### Filter Tool
-- Grayscale, Sepia, Invert
-- Blur, Sharpen effects
-- Pixel-level transformations
-
-### Brightness Tool
-- Brightness adjustment (-100 to +100)
-- Contrast control (-100 to +100)
-- Saturation control (-100 to +100)
-- Reset to original
+| Tool | Basic Features | Advanced Features |
+|------|----------------|-------------------|
+| **Compress** | Quality slider | Format selection, compression methods, metadata control |
+| **Resize** | Width/height, aspect ratio | Resize modes, resampling algorithms, presets, percentage |
+| **Crop** | Interactive selection, presets | Manual coordinates, alignment, grid overlay |
+| **Convert** | Format selection | Quality settings, color space, metadata stripping |
+| **Rotate** | Quick angles, slider | Background color, trim edges, precise angles |
+| **Watermark** | Text, size, opacity, position | Font family/style, color, rotation, outline, shadow |
+| **Merge** | Direction, multiple images | Spacing, alignment, grid layouts, borders, padding |
+| **Flip** | Horizontal/vertical | Combined flip, mirror effects, animation |
+| **Remove BG** | Auto removal, color fill | Sensitivity, edge refinement, threshold, preview modes |
+| **Upscale** | 2x/3x/4x scaling | Interpolation methods, sharpening, noise reduction |
+| **Filter** | 6 basic filters | 6 additional filters, intensity, RGB channels, temperature |
+| **Brightness** | Brightness/contrast/saturation | Shadows/highlights, gamma, exposure, levels, histogram |
 
 ## 🔒 Privacy & Security
 
@@ -177,29 +284,30 @@ npm run clean-port     # Kill process on port 3000
 - ✅ Safari (14+)
 - ✅ Mobile browsers (iOS Safari, Chrome Mobile)
 
-## 🛠️ Future Enhancements
+## 🛠️ Recent Updates
 
-### Not Yet Implemented
+### v2.0 - Advanced Options (Current)
+- ✅ Added collapsible Advanced Options to all 12 tools
+- ✅ 100+ new professional controls across all tools
+- ✅ Enhanced UI with expandable sections
+- ✅ Improved file size: 107KB (was 58KB)
+
+### v1.0 - Initial Release
+- ✅ 12 fully functional image editing tools
+- ✅ Basic controls for all tools
+- ✅ Black/white/yellow design theme
+
+## 🎓 Future Enhancements
+
+### Planned Features
 - [ ] Batch processing (multiple images)
-- [ ] Advanced background removal (AI-powered)
-- [ ] More filter options (vintage, HDR, etc.)
-- [ ] Image comparison (before/after slider)
-- [ ] Undo/redo functionality
-- [ ] Custom watermark images (not just text)
-- [ ] Advanced merge options (grid, collage)
-- [ ] Image metadata editor (EXIF)
-- [ ] Color palette extraction
-- [ ] Image optimization suggestions
-
-### Recommended Next Steps
-1. **Add Undo/Redo**: Implement history stack for all operations
-2. **Batch Processing**: Allow processing multiple images at once
-3. **Save Presets**: Let users save favorite settings
-4. **AI Background Removal**: Integrate with background removal API
-5. **More Formats**: Support TIFF, AVIF, HEIC
-6. **Progressive Web App**: Add offline support
-7. **Keyboard Shortcuts**: Add hotkeys for common actions
-8. **Image Comparison**: Before/after slider view
+- [ ] Undo/redo functionality with history
+- [ ] Save/load custom presets
+- [ ] Keyboard shortcuts
+- [ ] Image comparison slider (before/after)
+- [ ] Export settings as JSON
+- [ ] Progressive Web App (offline support)
+- [ ] Advanced AI-powered background removal API integration
 
 ## 📄 License
 
@@ -211,4 +319,7 @@ Built with ❤️ using Hono and Cloudflare Pages
 
 ---
 
-**Note**: This is a client-side application. For production use with advanced features (AI background removal, etc.), consider integrating third-party APIs via Cloudflare Workers.
+**Last Updated**: 2025-10-30  
+**Version**: 2.0 (Advanced Options)  
+**Total Tools**: 12  
+**Total Advanced Options**: 100+
