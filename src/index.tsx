@@ -23,6 +23,8 @@ import { InstagramReelsPage } from './pages/instagram-reels'
 import { InstagramPostPage } from './pages/instagram-post'
 import { InstagramStoryPage } from './pages/instagram-story'
 import { InstagramProfilePage } from './pages/instagram-profile'
+import { TikTokDownloaderPage } from './pages/tiktok-downloader'
+import { YouTubeDownloaderPage } from './pages/youtube-downloader'
 
 const app = new Hono()
 
@@ -57,6 +59,10 @@ app.get('/instagram/reels', (c) => c.html(InstagramReelsPage()))
 app.get('/instagram/post', (c) => c.html(InstagramPostPage()))
 app.get('/instagram/story', (c) => c.html(InstagramStoryPage()))
 app.get('/instagram/profile', (c) => c.html(InstagramProfilePage()))
+
+// Other Social Media Tools
+app.get('/tiktok', (c) => c.html(TikTokDownloaderPage()))
+app.get('/youtube', (c) => c.html(YouTubeDownloaderPage()))
 
 // API Routes for Instagram Downloads
 app.post('/api/instagram/fetch', async (c) => {
@@ -187,6 +193,195 @@ app.post('/api/instagram/fetch', async (c) => {
       error: 'Failed to fetch Instagram content',
       details: error instanceof Error ? error.message : 'Unknown error',
       note: 'Instagram restricts third-party access to their content. Consider using official Instagram app or browser extensions.'
+    }, 500)
+  }
+})
+
+// TikTok API endpoint
+app.post('/api/tiktok/fetch', async (c) => {
+  try {
+    const { url } = await c.req.json()
+    
+    if (!url) {
+      return c.json({ error: 'URL is required' }, 400)
+    }
+
+    if (!url.includes('tiktok.com')) {
+      return c.json({ error: 'Please enter a valid TikTok URL' }, 400)
+    }
+
+    // Extract video ID from URL
+    const videoIdMatch = url.match(/video\/(\d+)/)
+    const videoId = videoIdMatch ? videoIdMatch[1] : ''
+
+    // TikTok's oEmbed API
+    try {
+      const embedUrl = `https://www.tiktok.com/oembed?url=${encodeURIComponent(url)}`
+      const embedResponse = await fetch(embedUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+      })
+
+      if (embedResponse.ok) {
+        const embedData = await embedResponse.json()
+        
+        return c.json({
+          success: true,
+          type: 'tiktok',
+          videoId: videoId,
+          title: embedData.title,
+          authorName: embedData.author_name,
+          authorUrl: embedData.author_url,
+          thumbnailUrl: embedData.thumbnail_url,
+          embedHtml: embedData.html,
+          videoUrl: url,
+          note: 'TikTok videos can be downloaded using browser extensions or third-party tools.',
+          instructions: [
+            '1. Open the video in TikTok app or website',
+            '2. Use browser extensions like "TikTok Downloader" or "Video Downloader"',
+            '3. Or use online tools like snaptik.app or tikmate.app',
+            '4. For mobile: Use "Repost" apps from app stores'
+          ]
+        })
+      }
+    } catch (error) {
+      // oEmbed failed
+    }
+
+    // Fallback response
+    return c.json({
+      success: true,
+      type: 'tiktok',
+      videoId: videoId,
+      videoUrl: url,
+      note: 'TikTok restricts direct API access. Please use alternative methods.',
+      instructions: [
+        '1. Click the link above to open the video',
+        '2. In TikTok app: Long press and select "Save video"',
+        '3. Use browser extensions: "TikTok Downloader", "Video DownloadHelper"',
+        '4. Online tools: snaptik.app, tikmate.app, or ssstik.io',
+        '5. These tools can remove watermarks and download in HD'
+      ],
+      recommendations: [
+        { name: 'SnapTik', url: 'https://snaptik.app' },
+        { name: 'TikMate', url: 'https://tikmate.app' },
+        { name: 'SSSTik', url: 'https://ssstik.io' }
+      ]
+    })
+  } catch (error) {
+    console.error('TikTok fetch error:', error)
+    return c.json({ 
+      error: 'Failed to fetch TikTok content',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, 500)
+  }
+})
+
+// YouTube API endpoint
+app.post('/api/youtube/fetch', async (c) => {
+  try {
+    const { url } = await c.req.json()
+    
+    if (!url) {
+      return c.json({ error: 'URL is required' }, 400)
+    }
+
+    if (!url.includes('youtube.com') && !url.includes('youtu.be')) {
+      return c.json({ error: 'Please enter a valid YouTube URL' }, 400)
+    }
+
+    // Extract video ID from various YouTube URL formats
+    let videoId = ''
+    
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+      /youtube\.com\/watch\?.*v=([^&\n?#]+)/
+    ]
+    
+    for (const pattern of patterns) {
+      const match = url.match(pattern)
+      if (match) {
+        videoId = match[1]
+        break
+      }
+    }
+
+    if (!videoId) {
+      return c.json({ error: 'Could not extract video ID from URL' }, 400)
+    }
+
+    // YouTube's oEmbed API
+    try {
+      const embedUrl = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`
+      const embedResponse = await fetch(embedUrl)
+
+      if (embedResponse.ok) {
+        const embedData = await embedResponse.json()
+        
+        return c.json({
+          success: true,
+          type: 'youtube',
+          videoId: videoId,
+          title: embedData.title,
+          authorName: embedData.author_name,
+          authorUrl: embedData.author_url,
+          thumbnailUrl: embedData.thumbnail_url || `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+          embedHtml: embedData.html,
+          videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
+          watchUrl: `https://www.youtube.com/watch?v=${videoId}`,
+          note: 'YouTube videos require special tools for downloading due to copyright protection.',
+          instructions: [
+            '1. Use browser extensions: "Video Downloader Plus" (Chrome), "Video DownloadHelper" (Firefox)',
+            '2. Online tools: y2mate.com, yt1s.com, or savefrom.net',
+            '3. Desktop software: 4K Video Downloader, YTD Video Downloader',
+            '4. For audio only: Use MP3 converter tools',
+            '5. Always respect copyright and use downloaded content legally'
+          ],
+          recommendations: [
+            { name: 'Y2Mate', url: 'https://y2mate.com', type: 'Online tool for video/audio' },
+            { name: 'YT1s', url: 'https://yt1s.com', type: 'Fast MP4/MP3 converter' },
+            { name: '4K Video Downloader', url: 'https://www.4kdownload.com', type: 'Desktop app (Windows/Mac)' }
+          ],
+          formats: [
+            { quality: '1080p', format: 'MP4', note: 'Full HD video' },
+            { quality: '720p', format: 'MP4', note: 'HD video' },
+            { quality: '480p', format: 'MP4', note: 'Standard quality' },
+            { quality: '320kbps', format: 'MP3', note: 'High quality audio' },
+            { quality: '128kbps', format: 'MP3', note: 'Standard audio' }
+          ]
+        })
+      }
+    } catch (error) {
+      // oEmbed failed
+    }
+
+    // Fallback response
+    return c.json({
+      success: true,
+      type: 'youtube',
+      videoId: videoId,
+      thumbnailUrl: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+      videoUrl: `https://www.youtube.com/watch?v=${videoId}`,
+      watchUrl: `https://www.youtube.com/watch?v=${videoId}`,
+      note: 'YouTube restricts direct API access for downloads.',
+      instructions: [
+        '1. Click the watch link above to open the video',
+        '2. Use recommended browser extensions or online tools below',
+        '3. Select your preferred quality and format',
+        '4. Remember to respect copyright laws'
+      ],
+      recommendations: [
+        { name: 'Y2Mate', url: 'https://y2mate.com' },
+        { name: 'YT1s', url: 'https://yt1s.com' },
+        { name: 'SaveFrom.net', url: 'https://savefrom.net' }
+      ]
+    })
+  } catch (error) {
+    console.error('YouTube fetch error:', error)
+    return c.json({ 
+      error: 'Failed to fetch YouTube content',
+      details: error instanceof Error ? error.message : 'Unknown error'
     }, 500)
   }
 })

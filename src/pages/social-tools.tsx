@@ -8,9 +8,12 @@ export const SocialToolsPage = () => {
     { name: 'Profile Picture', icon: 'fa-user-circle', path: '/instagram/profile', desc: 'Get full-size profile pictures' }
   ]
 
+  const otherTools = [
+    { name: 'TikTok Downloader', icon: 'fab fa-tiktok', path: '/tiktok', desc: 'Download TikTok videos without watermark', color: 'black' },
+    { name: 'YouTube Downloader', icon: 'fab fa-youtube', path: '/youtube', desc: 'Download YouTube videos and audio', color: 'red' }
+  ]
+
   const comingSoonTools = [
-    { name: 'TikTok Downloader', icon: 'fab fa-tiktok', platform: 'TikTok', desc: 'Download TikTok videos without watermark' },
-    { name: 'YouTube Downloader', icon: 'fab fa-youtube', platform: 'YouTube', desc: 'Download YouTube videos and audio' },
     { name: 'Twitter Downloader', icon: 'fab fa-twitter', platform: 'Twitter', desc: 'Save Twitter videos and GIFs' },
     { name: 'Facebook Downloader', icon: 'fab fa-facebook', platform: 'Facebook', desc: 'Download Facebook videos' }
   ]
@@ -78,6 +81,32 @@ export const SocialToolsPage = () => {
                   <i class={`fas ${tool.icon} text-pink-500 text-4xl mb-4`}></i>
                   <h3 class="text-xl font-bold text-gray-800 mb-2">{tool.name}</h3>
                   <p class="text-gray-600 text-sm">{tool.desc}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Other Popular Platforms */}
+        <div class="mb-16">
+          <div class="flex items-center mb-8">
+            <i class="fas fa-fire text-yellow text-4xl mr-4"></i>
+            <div>
+              <h2 class="text-3xl font-bold text-white">Popular Platforms</h2>
+              <p class="text-gray-400">Download from TikTok and YouTube</p>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {otherTools.map(tool => (
+              <a href={tool.path} class="tool-card rounded-lg p-8 block group">
+                <div class="text-center">
+                  <i class={`${tool.icon} text-yellow text-5xl mb-4 group-hover:scale-110 transition-transform`}></i>
+                  <h3 class="text-2xl font-bold text-white mb-2">{tool.name}</h3>
+                  <p class="text-gray-300 mb-4">{tool.desc}</p>
+                  <span class="inline-block bg-yellow text-black text-sm font-bold px-4 py-2 rounded-full">
+                    <i class="fas fa-check-circle mr-2"></i>Available Now
+                  </span>
                 </div>
               </a>
             ))}

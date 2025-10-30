@@ -178,23 +178,22 @@ export const Layout = (props: { children: any; title: string }) => {
                   </div>
                 </div>
 
-                {/* Instagram Tools Dropdown */}
+                {/* Social Media Tools Dropdown */}
                 <div class="dropdown">
                   <a href="#" class="text-white hover:text-yellow transition flex items-center cursor-pointer">
-                    <i class="fab fa-instagram mr-2"></i>Instagram
+                    <i class="fas fa-share-alt mr-2"></i>Social Media
                     <i class="fas fa-chevron-down ml-2 text-xs"></i>
                   </a>
                   <div class="dropdown-content">
-                    <a href="/instagram/reels"><i class="fas fa-video mr-2"></i>Reels Downloader</a>
-                    <a href="/instagram/post"><i class="fas fa-image mr-2"></i>Post Downloader</a>
-                    <a href="/instagram/story"><i class="fas fa-clock mr-2"></i>Story Downloader</a>
-                    <a href="/instagram/profile"><i class="fas fa-user-circle mr-2"></i>Profile Picture</a>
+                    <a href="/instagram/reels"><i class="fab fa-instagram mr-2"></i>Instagram Reels</a>
+                    <a href="/instagram/post"><i class="fab fa-instagram mr-2"></i>Instagram Post</a>
+                    <a href="/instagram/story"><i class="fab fa-instagram mr-2"></i>Instagram Story</a>
+                    <a href="/instagram/profile"><i class="fab fa-instagram mr-2"></i>Instagram Profile</a>
+                    <a href="/tiktok"><i class="fab fa-tiktok mr-2"></i>TikTok Downloader</a>
+                    <a href="/youtube"><i class="fab fa-youtube mr-2"></i>YouTube Downloader</a>
+                    <a href="/social-tools"><i class="fas fa-list mr-2"></i>View All Tools</a>
                   </div>
                 </div>
-
-                <a href="/social-tools" class="text-white hover:text-yellow transition flex items-center">
-                  <i class="fas fa-share-alt mr-2"></i>Social Tools
-                </a>
               </div>
 
               {/* Mobile Menu Button */}
@@ -300,6 +299,7 @@ export const Layout = (props: { children: any; title: string }) => {
         
         <script src="/static/app.js"></script>
         <script src="/static/instagram.js"></script>
+        <script src="/static/social-media.js"></script>
       </body>
     </html>
   )
